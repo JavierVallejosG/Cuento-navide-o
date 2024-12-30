@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuento Navideño Familiar</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.1/turn.min.js"></script>
     <style>
         body {
             font-family: 'Quicksand', sans-serif;
-            background: url('book-background.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -20,8 +18,7 @@
         }
         .story-container {
             width: 90%;
-            max-width: 700px;
-            height: 500px;
+            max-width: 900px;
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -29,34 +26,29 @@
             position: relative;
         }
         .page {
-            width: 100%;
-            height: 100%;
-            display: flex;
+            height: 500px;
+            display: none;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 2rem;
-            background: #fff;
-        }
-        .page img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-        .page h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
+            animation: flipPage 1s forwards;
             position: absolute;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .page.active {
+            display: flex;
+        }
+        @keyframes flipPage {
+            from {
+                transform: rotateY(180deg);
+                opacity: 0;
+            }
+            to {
+                transform: rotateY(0);
+                opacity: 1;
+            }
         }
         .nav-buttons {
             display: flex;
@@ -64,95 +56,149 @@
             padding: 1rem;
             margin-top: 2rem;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            z-index: 1;
+            position: relative;
+        }
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .reverse .content {
+            flex-direction: row-reverse;
+        }
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            .reverse .content {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="story-container" id="storyBook">
+    <div class="story-container">
+        <div class="progress-bar" id="progressBar"></div>
+        
         <!-- Páginas del cuento -->
-        <div class="page">
+        <div class="page active" id="page1">
             <h2>Cuento Navideño Familiar</h2>
-            <img src="Designer1.jpeg" alt="Gatina">
+            <div class="content">
+                <img src="Designer1.jpeg" alt="Gatina">
+                <div>
+                    <h2>El mágico pueblo de Gatina</h2>
+                    <p>Los protagonistas viven en Gatina, un pueblo donde los gatos son los guardianes secretos de los sueños de las personas...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <h2>El mágico pueblo de Gatina</h2>
-            <p>Los protagonistas viven en Gatina, un pueblo donde los gatos son los guardianes secretos de los sueños de las personas...</p>
+        <div class="page reverse" id="page2">
+            <div class="content">
+                <img src="Designer2.jpeg" alt="Noche de susurros misteriosos">
+                <div>
+                    <h2>Una noche de susurros misteriosos</h2>
+                    <p>Una noche, Bastian escucha susurros provenientes del bosque cercano...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <img src="Designer2.jpeg" alt="Noche de susurros misteriosos">
+        <div class="page" id="page3">
+            <div class="content">
+                <img src="Designer3.jpeg" alt="La búsqueda del origen de los susurros">
+                <div>
+                    <h2>La búsqueda del origen de los susurros</h2>
+                    <p>La familia decide investigar y se adentran en el bosque con la ayuda de los animales. Descubren un portal mágico oculto entre los árboles...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <h2>Una noche de susurros misteriosos</h2>
-            <p>Una noche, Bastian escucha susurros provenientes del bosque cercano...</p>
+        <div class="page reverse" id="page4">
+            <div class="content">
+                <img src="Designer4.jpeg" alt="El guardián del portal">
+                <div>
+                    <h2>El guardián del portal</h2>
+                    <p>Para cruzar el portal, deben superar un acertijo planteado por un gato parlante que odia ciertos alimentos...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <img src="Designer3.jpeg" alt="La búsqueda del origen de los susurros">
+        <div class="page" id="page5">
+            <div class="content">
+                <img src="Designer5.jpeg" alt="El mundo detrás del portal">
+                <div>
+                    <h2>El mundo detrás del portal</h2>
+                    <p>Al cruzar, llegan a un reino donde los gatos son los guardianes del equilibrio entre los sueños y la realidad...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <h2>La búsqueda del origen de los susurros</h2>
-            <p>La familia decide investigar y se adentran en el bosque con la ayuda de los animales. Descubren un portal mágico oculto entre los árboles...</p>
+        <div class="page reverse" id="page6">
+            <div class="content">
+                <img src="Designer6.jpeg" alt="Restaurando el equilibrio">
+                <div>
+                    <h2>Restaurando el equilibrio</h2>
+                    <p>Con el ingenio de Bastian, la empatía de Gen y la fuerza de Javier, resuelven el problema, ganando la gratitud de los gatos guardianes...</p>
+                </div>
+            </div>
         </div>
-        <div class="page">
-            <img src="Designer4.jpeg" alt="El guardián del portal">
-        </div>
-        <div class="page">
-            <h2>El guardián del portal</h2>
-            <p>Para cruzar el portal, deben superar un acertijo planteado por un gato parlante que odia ciertos alimentos...</p>
-        </div>
-        <div class="page">
-            <img src="Designer5.jpeg" alt="El mundo detrás del portal">
-        </div>
-        <div class="page">
-            <h2>El mundo detrás del portal</h2>
-            <p>Al cruzar, llegan a un reino donde los gatos son los guardianes del equilibrio entre los sueños y la realidad...</p>
-        </div>
-        <div class="page">
-            <img src="Designer6.jpeg" alt="Restaurando el equilibrio">
-        </div>
-        <div class="page">
-            <h2>Restaurando el equilibrio</h2>
-            <p>Con el ingenio de Bastian, la empatía de Gen y la fuerza de Javier, resuelven el problema, ganando la gratitud de los gatos guardianes...</p>
-        </div>
-        <div class="page">
-            <img src="Designer7.jpeg" alt="Un sueño diferente">
-        </div>
-        <div class="page">
-            <h2>Un sueño diferente</h2>
-            <p>De regreso en Gatina, la familia duerme plácidamente mientras los gatos, ahora más cercanos que nunca, vigilan sus sueños...</p>
+        <div class="page" id="page7">
+            <div class="content">
+                <img src="Designer7.jpeg" alt="Un sueño diferente">
+                <div>
+                    <h2>Un sueño diferente</h2>
+                    <p>De regreso en Gatina, la familia duerme plácidamente mientras los gatos, ahora más cercanos que nunca, vigilan sus sueños...</p>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <div class="nav-buttons">
         <button id="prevBtn" class="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50" disabled>Anterior</button>
         <button id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Siguiente</button>
     </div>
 
     <script>
-        // Inicializar el efecto de voltear páginas
-        const storyBook = document.getElementById('storyBook');
-        $(storyBook).turn({
-            width: 700,
-            height: 500,
-            autoCenter: true,
-            acceleration: true,
-            display: 'double'
-        });
-
+        const pages = document.querySelectorAll('.page');
+        const progressBar = document.getElementById('progressBar');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        let currentPage = 0;
+
+        function updateStory() {
+            pages.forEach((page, index) => {
+                page.classList.toggle('active', index === currentPage);
+            });
+            progressBar.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage === pages.length - 1;
+        }
 
         prevBtn.addEventListener('click', () => {
-            $(storyBook).turn('previous');
+            if (currentPage > 0) {
+                currentPage--;
+                updateStory();
+            }
         });
 
         nextBtn.addEventListener('click', () => {
-            $(storyBook).turn('next');
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                updateStory();
+            }
         });
 
-        // Actualizar estado de los botones
-        $(storyBook).bind('turn', function(event, page, view) {
-            prevBtn.disabled = page === 1;
-            nextBtn.disabled = page === $(storyBook).turn('pages');
-        });
+        updateStory();
     </script>
 </body>
 </html>
