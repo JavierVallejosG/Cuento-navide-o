@@ -14,6 +14,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin: 0;
         }
         .story-container {
             width: 90%;
@@ -33,24 +34,30 @@
             text-align: center;
             padding: 2rem;
             animation: fadeIn 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
         }
         .page.active {
             display: flex;
+            animation: slideIn 0.5s ease-in-out;
         }
-        @keyframes fadeIn {
+        @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateX(100%);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
         .nav-buttons {
             display: flex;
             justify-content: space-between;
             padding: 1rem;
+            margin-top: 2rem;
         }
         .progress-bar {
             position: absolute;
@@ -67,15 +74,14 @@
             margin-bottom: 1rem;
         }
         h2 {
-            position: absolute;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 0;
             font-size: 1.5rem;
             font-weight: bold;
             background: rgba(255, 255, 255, 0.8);
             padding: 0.5rem 1rem;
             border-radius: 10px;
+            z-index: 1;
+            position: relative;
         }
     </style>
 </head>
@@ -83,78 +89,7 @@
     <div class="story-container">
         <div class="progress-bar" id="progressBar"></div>
         <!-- Páginas del cuento -->
-        <div class="page active" id="page1">
-            <h2>El mágico pueblo de Gatina</h2>
-            <img src="Designer1.jpeg" alt="El mágico pueblo de Gatina">
-            <p>
-                En un rincón escondido del mundo, existía un pequeño pueblo llamado Gatina, donde los gatos no eran
-                simples compañeros, sino guardianes mágicos de los sueños. Este lugar era conocido por sus calles adoquinadas
-                bordeadas de árboles que parecían susurrar secretos al viento. Allí vivían Bastian, un niño curioso de 14 años,
-                junto con Gen y Javier, quienes amaban profundamente a los animales. Aunque la vida en Gatina parecía tranquila,
-                algo mágico siempre estaba a punto de suceder.
-            </p>
-        </div>
-        <div class="page" id="page2">
-            <h2>Una noche de susurros misteriosos</h2>
-            <img src="Designer2.jpeg" alt="Susurros misteriosos">
-            <p>
-                Una noche, mientras las estrellas iluminaban el cielo, Bastian no podía dormir. Desde su ventana, escuchó
-                unos susurros que parecían venir del bosque cercano. Intrigado, bajó las escaleras, solo para encontrar a sus
-                padres en la sala, también despiertos por los extraños sonidos. "¿Escuchaste eso?", preguntó Bastian. Gen y Javier
-                asintieron, mirando por la ventana hacia el bosque. Los gatos del pueblo estaban inquietos, como si supieran algo
-                que los humanos no podían comprender.
-            </p>
-        </div>
-        <div class="page" id="page3">
-            <h2>La búsqueda del origen de los susurros</h2>
-            <img src="Designer3.jpeg" alt="Búsqueda del origen">
-            <p>
-                Decididos a descubrir el origen de los misteriosos susurros, la familia se adentró en el bosque con linternas en mano.
-                Los gatos del pueblo los seguían de cerca, como si fueran sus guías. A medida que avanzaban, se encontraron con un
-                portal mágico oculto entre los árboles. Este portal brillaba con una luz azul intensa, y parecía pulsar al ritmo
-                de los susurros que habían escuchado. Bastian se acercó lentamente, con el corazón latiendo a toda velocidad.
-            </p>
-        </div>
-        <div class="page" id="page4">
-            <h2>El guardián del portal</h2>
-            <img src="Designer4.jpeg" alt="El guardián del portal">
-            <p>
-                Frente al portal, un gato parlante apareció de la nada. Su pelaje dorado brillaba bajo la luz de la luna.
-                "Si desean cruzar, mi acertijo deberán superar", dijo con una voz grave. La familia se miró, sorprendida pero
-                decidida. El gato les dijo "En la noche brilla y guía, pero no es estrella ni vela encendida. En su luz puedes confiar,
-				cuando el camino quieras encontrar. ¿Qué soy?". Bastian, Gen y Javier
-                unieron fuerzas para resolverlo, diciendo que la respuesta era ¡La Luna! demostrando que el trabajo en equipo siempre triunfa.
-            </p>
-        </div>
-        <div class="page" id="page5">
-            <h2>El mundo detrás del portal</h2>
-            <img src="Designer5.jpeg" alt="El mundo detrás del portal">
-            <p>
-                Al cruzar el portal, la familia se encontró en un reino mágico donde los gatos gobernaban como protectores
-                del equilibrio entre sueños y realidad. Todo era etéreo: islas flotantes, castillos hechos de luz, y gatos
-                majestuosos que observaban desde tronos dorados. Los habitantes del reino explicaron que algo había alterado
-                este equilibrio, y necesitaban la ayuda de los recién llegados para restaurarlo.
-            </p>
-        </div>
-        <div class="page" id="page6">
-            <h2>Restaurando el equilibrio</h2>
-            <img src="Designer6.jpeg" alt="Restaurando el equilibrio">
-            <p>
-                Con su ingenio, la familia trabajó junto a los gatos para restaurar el cristal mágico que mantenía el equilibrio.
-                Bastian utilizó su creatividad, Gen aportó su empatía y Javier, su fuerza. Juntos, lograron devolver el cristal
-                a su lugar, provocando un resplandor que iluminó todo el reino. Los gatos guardianes agradecieron profundamente
-                a la familia por su valentía y determinación.
-            </p>
-        </div>
-        <div class="page" id="page7">
-            <h2>Un sueño diferente</h2>
-            <img src="Designer7.jpeg" alt="Un sueño diferente">
-            <p>
-                De regreso en Gatina, la familia se sintió más unida que nunca. Esa noche, mientras dormían profundamente,
-                los gatos velaron por sus sueños, asegurándose de que siempre estuvieran protegidos. Desde entonces, Bastian,
-                Gen y Javier entendieron que su conexión con los gatos iba más allá de lo especial: era mágica.
-            </p>
-        </div>
+        <!-- Tus páginas del cuento aquí -->
     </div>
     <div class="nav-buttons">
         <button id="prevBtn" class="px-4 py-2 bg-gray-300 text-gray-800 rounded disabled:opacity-50" disabled>Anterior</button>
