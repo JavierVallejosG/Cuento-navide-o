@@ -9,7 +9,8 @@
     <style>
         body {
             font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            background: url('book-background.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -71,36 +72,50 @@
         <div class="page">
             <h2>Cuento Navideño Familiar</h2>
             <img src="Designer1.jpeg" alt="Gatina">
+        </div>
+        <div class="page">
             <h2>El mágico pueblo de Gatina</h2>
             <p>Los protagonistas viven en Gatina, un pueblo donde los gatos son los guardianes secretos de los sueños de las personas...</p>
         </div>
         <div class="page">
             <img src="Designer2.jpeg" alt="Noche de susurros misteriosos">
+        </div>
+        <div class="page">
             <h2>Una noche de susurros misteriosos</h2>
             <p>Una noche, Bastian escucha susurros provenientes del bosque cercano...</p>
         </div>
         <div class="page">
             <img src="Designer3.jpeg" alt="La búsqueda del origen de los susurros">
+        </div>
+        <div class="page">
             <h2>La búsqueda del origen de los susurros</h2>
             <p>La familia decide investigar y se adentran en el bosque con la ayuda de los animales. Descubren un portal mágico oculto entre los árboles...</p>
         </div>
         <div class="page">
             <img src="Designer4.jpeg" alt="El guardián del portal">
+        </div>
+        <div class="page">
             <h2>El guardián del portal</h2>
             <p>Para cruzar el portal, deben superar un acertijo planteado por un gato parlante que odia ciertos alimentos...</p>
         </div>
         <div class="page">
             <img src="Designer5.jpeg" alt="El mundo detrás del portal">
+        </div>
+        <div class="page">
             <h2>El mundo detrás del portal</h2>
             <p>Al cruzar, llegan a un reino donde los gatos son los guardianes del equilibrio entre los sueños y la realidad...</p>
         </div>
         <div class="page">
             <img src="Designer6.jpeg" alt="Restaurando el equilibrio">
+        </div>
+        <div class="page">
             <h2>Restaurando el equilibrio</h2>
             <p>Con el ingenio de Bastian, la empatía de Gen y la fuerza de Javier, resuelven el problema, ganando la gratitud de los gatos guardianes...</p>
         </div>
         <div class="page">
             <img src="Designer7.jpeg" alt="Un sueño diferente">
+        </div>
+        <div class="page">
             <h2>Un sueño diferente</h2>
             <p>De regreso en Gatina, la familia duerme plácidamente mientras los gatos, ahora más cercanos que nunca, vigilan sus sueños...</p>
         </div>
@@ -119,6 +134,7 @@
             height: 500,
             autoCenter: true,
             acceleration: true,
+            display: 'double'
         });
 
         const prevBtn = document.getElementById('prevBtn');
