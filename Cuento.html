@@ -114,7 +114,7 @@
     <script>
         // Inicializar el efecto de voltear páginas
         const storyBook = document.getElementById('storyBook');
-        turn(storyBook, {
+        $(storyBook).turn({
             width: 700,
             height: 500,
             autoCenter: true,
@@ -125,17 +125,17 @@
         const nextBtn = document.getElementById('nextBtn');
 
         prevBtn.addEventListener('click', () => {
-            turn(storyBook, 'previous');
+            $(storyBook).turn('previous');
         });
 
         nextBtn.addEventListener('click', () => {
-            turn(storyBook, 'next');
+            $(storyBook).turn('next');
         });
 
         // Actualizar estado de los botones
-        storyBook.addEventListener('turn', () => {
-            prevBtn.disabled = turn(storyBook, 'page') === 1;
-            nextBtn.disabled = turn(storyBook, 'page') === turn(storyBook, 'pages');
+        $(storyBook).bind('turn', function(event, page, view) {
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = page === $(storyBook).turn('pages');
         });
     </script>
 </body>
